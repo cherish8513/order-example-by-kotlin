@@ -1,23 +1,24 @@
 package com.carver.shopstudy.member.entity
 
+import com.carver.shopstudy.common.entity.Address
 import com.carver.shopstudy.order.entity.Order
-import lombok.AccessLevel
-import lombok.NoArgsConstructor
 import javax.persistence.*
 
 @Entity
-class Member(name:String, address: Address) {
+class Member(name: String, address: Address) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
-    private val id: Long? = null
+    val id: Long? = null
 
-    private var name:String = name
+    var name: String = name
+        private set
 
     @Embedded
-    private var address:Address = address
+    var address: Address = address
+        private set
 
     @OneToMany(mappedBy = "member")
-    private val orders: List<Order> = listOf()
+    val orders = mutableListOf<Order>()
 
 }
