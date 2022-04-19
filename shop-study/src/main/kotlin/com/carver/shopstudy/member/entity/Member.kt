@@ -2,8 +2,10 @@ package com.carver.shopstudy.member.entity
 
 import com.carver.shopstudy.common.entity.Address
 import com.carver.shopstudy.order.entity.Order
+import com.querydsl.core.annotations.QueryEntity
 import javax.persistence.*
 
+@QueryEntity
 @Entity
 class Member(name: String, address: Address) {
     @Id
@@ -21,4 +23,7 @@ class Member(name: String, address: Address) {
     @OneToMany(mappedBy = "member")
     val orders = mutableListOf<Order>()
 
+    fun changeName(name:String) {
+        this.name = name
+    }
 }

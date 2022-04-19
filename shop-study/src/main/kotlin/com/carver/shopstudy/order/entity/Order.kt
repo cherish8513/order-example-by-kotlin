@@ -1,9 +1,11 @@
 package com.carver.shopstudy.order.entity
 
 import com.carver.shopstudy.member.entity.Member
+import com.querydsl.core.annotations.QueryEntity
 import javax.persistence.*
 
 
+@QueryEntity
 @Entity
 class Order {
 
