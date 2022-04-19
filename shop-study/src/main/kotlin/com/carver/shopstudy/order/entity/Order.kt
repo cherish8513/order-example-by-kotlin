@@ -6,6 +6,7 @@ import javax.persistence.*
 
 
 @QueryEntity
+@Table(name = "orders")
 @Entity
 class Order {
 

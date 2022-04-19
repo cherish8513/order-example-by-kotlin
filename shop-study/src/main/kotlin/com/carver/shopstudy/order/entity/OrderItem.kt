@@ -8,7 +8,7 @@ import javax.persistence.*
 class OrderItem(item: Item, orderPrice: Int, count: Int) {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_id")
     var id: Long? = null
         private set

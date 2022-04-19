@@ -7,9 +7,9 @@ import javax.validation.constraints.Size
 data class SaveMemberRequestDto(
     @field:NotEmpty
     @field:Size(min = 2, max = 8)
-    var name:String ?= null,
+    var name: String,
 
     @field:NotEmpty
-    var address:Address ?= null
+    var address: Address
 
 )

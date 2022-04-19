@@ -7,23 +7,35 @@ import javax.persistence.*
 
 @QueryEntity
 @Entity
-class Member(name: String, address: Address) {
+class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     val id: Long? = null
 
-    var name: String = name
+    var name: String? = null
         private set
 
     @Embedded
-    var address: Address = address
+    var address: Address? = null
         private set
 
     @OneToMany(mappedBy = "member")
     val orders = mutableListOf<Order>()
 
-    fun changeName(name:String) {
+    fun createMember(name: String, address: Address): Member {
+        val member = Member()
+        member.changeName(name)
+        member.changeAddress(address)
+
+        return member
+    }
+
+    fun changeName(name: String) {
         this.name = name
+    }
+
+    fun changeAddress(address: Address) {
+        this.address = address
     }
 }

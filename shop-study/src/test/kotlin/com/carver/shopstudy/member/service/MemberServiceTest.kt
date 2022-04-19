@@ -1,10 +1,9 @@
 package com.carver.shopstudy.member.service
 
 import com.carver.shopstudy.common.entity.Address
-import com.carver.shopstudy.member.entity.Member
+import com.carver.shopstudy.member.dto.request.SaveMemberRequestDto
 import com.carver.shopstudy.member.repository.MemberRepository
-import org.assertj.core.api.Assertions
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -28,10 +27,10 @@ class MemberServiceTest {
     fun 회원가입_성공() {
         //given
         val address = Address("seoul", "street", "zipcode")
-        val member = Member("name", address)
+        var requestDto = SaveMemberRequestDto("name", address)
 
         //when
-        memberService.join(member)
+        memberService.join(requestDto)
 
         //then
         assertThat(memberRepository.count()).isEqualTo(1)

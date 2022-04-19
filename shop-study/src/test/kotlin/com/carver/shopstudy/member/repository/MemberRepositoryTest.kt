@@ -25,7 +25,7 @@ class MemberRepositoryTest {
     fun 유저생성() {
         //given
         val address = Address("seoul", "street", "zipcode")
-        val member = Member("name", address)
+        val member = Member().createMember("name", address)
 
         //when
         memberRepository.save(member)
